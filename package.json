@@ -1,16 +1,17 @@
 {
-  "name": "questionario-casamento",
+  "name": "formulario-priborges",
   "version": "1.0.0",
   "private": true,
+  "description": "Questionário dos Noivos — Priscila Borges, Celebrante",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "dev": "vercel dev"
+    "dev": "npx vercel dev"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.0.0",
     "resend": "^6.0.0"
-  },
-  "devDependencies": {
-    "vercel": "^48.0.0"
   }
 }
