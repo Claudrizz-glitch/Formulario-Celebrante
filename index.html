@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Questionário dos Noivos | Priscila Borges</title>
+
+    <meta
+        name="description"
+        content="Compartilhe sua história de amor para a construção de uma cerimônia única."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <main class="pagina">
+
+        <header class="cabecalho">
+
+            <div class="marca">
+
+                <span class="marca-legenda">
+                    PRISCILA BORGES
+                </span>
+
+                <span class="marca-titulo">
+                    Celebrante
+                </span>
+
+            </div>
+
+            <span class="linha-decorativa"></span>
+
+            <p class="categoria">
+                QUESTIONÁRIO DOS NOIVOS
+            </p>
+
+            <h1>
+                A história de vocês,
+                <br>
+                <em>contada com o coração</em>
+            </h1>
+
+            <p class="subtitulo">
+                Cada história de amor tem sua própria beleza.
+                Quero conhecer a de vocês para celebrar não apenas
+                o casamento, mas tudo o que trouxe vocês até aqui.
+            </p>
+
+            <div class="ornamento">❧</div>
+
+        </header>
+
+
+        <form id="formulario-noivos">
+
+            <section class="identificacao">
+
+                <label for="nome-casal">
+                    Nome do casal
+                </label>
+
+                <input
+                    type="text"
+                    id="nome-casal"
+                    name="nome_casal"
+                    placeholder="Ex.: Maria e João"
+                    required
+                    maxlength="150"
+                >
+
+            </section>
+
+
+            <section class="introducao">
+
+                <span class="numero-secao">
+                    ANTES DE COMEÇAR
+                </span>
+
+                <h2>Um convite para recordar</h2>
+
+                <p>
+                    Este é um convite para revisitar lembranças,
+                    reconhecer o caminho que vocês percorreram
+                    e colocar em palavras aquilo que torna essa
+                    história única.
+                </p>
+
+                <p>
+                    Peço que cada um responda individualmente,
+                    com tranquilidade e sinceridade.
+                    Não existe resposta certa ou errada.
+                </p>
+
+                <p>
+                    Escreva do seu jeito, compartilhe detalhes
+                    e permita-se lembrar de momentos que talvez
+                    pareçam pequenos, mas que têm um significado
+                    enorme para vocês.
+                </p>
+
+                <p>
+                    As respostas serão usadas como inspiração
+                    para a construção da cerimônia.
+                </p>
+
+                <p>
+                    Se houver algum assunto delicado ou informação
+                    que você não queira que seja mencionada
+                    publicamente, sinalize isso ao final do questionário.
+                </p>
+
+                <p class="frase-final">
+                    Reserve um momento só seu.
+                    Sua verdade é o que torna essa história especial.
+                </p>
+
+            </section>
+
+
+            <div id="perguntas-container"></div>
+
+
+            <section class="bloco-secao finalizacao">
+
+                <span class="numero-secao">
+                    PARA FINALIZAR
+                </span>
+
+                <h2>Um último espaço para você</h2>
+
+                <p class="descricao-secao">
+                    Este espaço é seu.
+                </p>
+
+                <div class="campo">
+
+                    <label for="informacoes-confidenciais">
+                        Há alguma informação confidencial, contexto
+                        ou cuidado que devo considerar ao preparar
+                        a cerimônia?
+                    </label>
+
+                    <textarea
+                        id="informacoes-confidenciais"
+                        name="informacoes_confidenciais"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="perguntas-celebrante">
+                        Tem algo que você gostaria de me perguntar
+                        ou compartilhar comigo?
+                    </label>
+
+                    <textarea
+                        id="perguntas-celebrante"
+                        name="perguntas_celebrante"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+            </section>
+
+
+            <section class="envio">
+
+                <div class="ornamento">❧</div>
+
+                <p class="mensagem-agradecimento">
+                    Obrigada por me permitir conhecer um pedacinho
+                    tão especial da história de vocês.
+                </p>
+
+                <p class="assinatura">
+
+                    Com carinho,
+
+                    <strong>Priscila Borges</strong>
+
+                    <span>Celebrante</span>
+
+                </p>
+
+                <button type="submit" id="botao-enviar">
+                    Enviar minhas respostas
+                </button>
+
+                <p
+                    id="mensagem-status"
+                    class="mensagem-status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+        </form>
+
+
+        <footer class="rodape">
+
+            <span>PRISCILA BORGES · CELEBRANTE</span>
+
+            <span>
+                Feito para celebrar histórias de amor.
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script src="js/formulario.js"></script>
+
+</body>
+
+</html>
