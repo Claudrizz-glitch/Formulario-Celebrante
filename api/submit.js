@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { getSupabase } from "../lib/supabase.js";
 import { QUESTIONARIO, PERGUNTA_CONFIDENCIAL } from "../lib/questionario.js";
 
@@ -326,27 +326,34 @@ export default async function handler(req, res) {
         });
     }
 
-    // 2. Enviar o e-mail pelo Resend
+    // 2. Enviar o e-mail pelo Gmail (SMTP com senha de app)
     try {
-        if (!process.env.RESEND_API_KEY || !process.env.RESEND_FROM) {
-            throw new Error("Configuração do Resend incompleta.");
+        const usuario = process.env.GMAIL_USER;
+        const senhaApp = (process.env.GMAIL_APP_PASSWORD || "").replace(/\s+/g, "");
+        if (!usuario || !senhaApp) {
+            throw new Error("GMAIL_USER e GMAIL_APP_PASSWORD precisam estar configuradas.");
         }
 
-        const resend = new Resend(process.env.RESEND_API_KEY);
+        const transporte = nodemailer.createTransport({
+            host: process.env.SMTP_HOST || "smtp.gmail.com",
+            port: Number(process.env.SMTP_PORT || 465),
+            secure: process.env.SMTP_SECURE !== "false",
+            auth: { user: usuario, pass: senhaApp },
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
+            socketTimeout: 15000
+        });
+
         const email = montarEmail(dados);
 
-        const { error: emailError } = await resend.emails.send(
-            {
-                from: process.env.RESEND_FROM,
-                to: [DESTINATARIO],
-                subject: email.assunto,
-                html: email.html,
-                text: email.texto
-            },
-            { idempotencyKey: `questionario-${registroId}` }
-        );
-
-        if (emailError) throw emailError;
+        await transporte.sendMail({
+            from: { name: "Questionário dos Noivos", address: usuario },
+            to: DESTINATARIO,
+            subject: email.assunto,
+            html: email.html,
+            text: email.texto,
+            headers: { "X-Questionario-Id": registroId }
+        });
     } catch (e) {
         console.error(`E-mail não enviado (registro ${registroId} salvo no Supabase):`, e);
         return res.status(200).json({
